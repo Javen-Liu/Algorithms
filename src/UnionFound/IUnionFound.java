@@ -32,10 +32,4 @@ public interface IUnionFound {
      * @return 连通分量的数量
      */
     int count();
-
-    /**
-     * 将固定配置文件进行读取，并进行连通
-     * 最终所有节点都按照配置文件所规定连接
-     */
-    void sort();
 }
