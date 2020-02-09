@@ -10,12 +10,29 @@ import java.util.Random;
  */
 public class InsertionSort {
     /**
-     * 排序方法sort()
+     * 排序方法sort(),无起始与终止索引参数
      * @param a 待排序的数组，且实现了Comparable接口
      */
     public static void sort(Comparable[] a){
         int len = a.length;
         for (int i = 1; i < len; i++) {
+            for (int j = i; j > 0 && less(a[j],a[j-1]); j--) {
+                exch(a,j,j-1);
+            }
+        }
+    }
+
+    /**
+     * 排序方法sort(),有起始与终止索引参数
+     * @param a     待排序数组
+     * @param low   起始索引
+     * @param high  终止索引
+     */
+    public static void sort(Comparable[] a,int low,int high){
+        if(low >= high){
+            return;
+        }
+        for (int i = low + 1; i <= high; i++) {
             for (int j = i; j > 0 && less(a[j],a[j-1]); j--) {
                 exch(a,j,j-1);
             }

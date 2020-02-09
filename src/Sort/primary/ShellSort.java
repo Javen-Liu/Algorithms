@@ -19,10 +19,32 @@ public class ShellSort {
         while(h < len/3){
             h = h*3+1;
         }
-        while(h>1){
+        while(h >= 1){
             for (int i = 1; i < len; i++) {
-                for (int j = i; j >= h && less(a[j],a[j-1]); j-=h) {
-                    exch(a,j,j-1);
+                for (int j = i; j >= h && less(a[j],a[j-h]); j-=h) {
+                    exch(a,j,j-h);
+                }
+            }
+            h = h/3;
+        }
+    }
+
+    /**
+     * 排序方法sort()，且有起始与终止索引
+     * @param a     待排序数组
+     * @param low   起始索引
+     * @param high  终止索引
+     */
+    public static void sort(Comparable[] a,int low,int high){
+        int len = high - low + 1;
+        int h = 1;
+        while(h < len/3){
+            h = h*3+1;
+        }
+        while(h >= 1){
+            for (int i = low + 1; i <= high; i++) {
+                for (int j = i; j >= h && less(a[j],a[j-h]); j-=h) {
+                    exch(a,j,j-h);
                 }
             }
             h = h/3;

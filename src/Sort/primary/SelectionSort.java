@@ -27,6 +27,24 @@ public class SelectionSort {
     }
 
     /**
+     * 排序方法sort()，且有起始与终止索引
+     * @param a     待排序的数组
+     * @param low   起始索引
+     * @param high  终止索引
+     */
+    public static void sort(Comparable[] a,int low,int high){
+        for (int i = low; i <= high; i++) {
+            int min = i;
+            for (int j = i+1; j <= high; j++) {
+                if(less(a[j],a[min])){
+                    min = j;
+                }
+            }
+            exch(a,i,min);
+        }
+    }
+
+    /**
      * 检查第一个元素q是否比第二个元素p小
      * @param q 第一个元素
      * @param p 第二个元素
