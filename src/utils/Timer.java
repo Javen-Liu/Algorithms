@@ -1,5 +1,8 @@
 package utils;
 
+/**
+ * @author 刘建雯
+ */
 public class Timer {
     private static long start = 0;
     private static long last = 0;
