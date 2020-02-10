@@ -1,5 +1,8 @@
 package Sort;
 
+/**
+ * @author 刘建雯
+ */
 public class Data implements Comparable<Data> {
     private Integer value;
 
