@@ -81,6 +81,7 @@ public class StackWithIterator<Item> implements Iterable<Item>{
      * 获取stack内部的迭代器
      * @return 返回一个实现了Iterator类接口的迭代器
      */
+    @Override
     public Iterator<Item> iterator(){
         return new LinkedListIterator();
     }
