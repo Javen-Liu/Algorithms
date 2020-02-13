@@ -18,7 +18,7 @@ import java.util.ArrayList;
  *          历，最坏的情况需要N次比较，效率仍然低，因此不是一种很好的
  *          实现方式。
  */
-@SuppressWarnings({"unused","unchecked"})
+@SuppressWarnings({"unused"})
 public class DisorderSymbolTableImpl<Key extends Comparable<Key>,Value> implements IDisorderSymbolTable<Key,Value> {
     private Node first,next;
     private int size = 0;
