@@ -4,7 +4,7 @@ package search.symboltable;
  * 无序的泛型符号表
  */
 @SuppressWarnings("unused")
-public interface IDisorderSymbolTable<Key extends Comparable<Key>, Value> {
+public interface IDisorderedSymbolTable<Key extends Comparable<Key>, Value> {
     /**
      * 将键值对存入表中（若值为空，则将键key从表中删除）
      * @param key   键

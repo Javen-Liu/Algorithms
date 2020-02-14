@@ -1,6 +1,6 @@
 package search.symboltable.impl;
 
-import search.symboltable.IDisorderSymbolTable;
+import search.symboltable.IDisorderedSymbolTable;
 
 import java.util.ArrayList;
 
@@ -17,9 +17,11 @@ import java.util.ArrayList;
  *          作是有目的性的，在删除指定的元素（节点）时，仍然需要进行遍
  *          历，最坏的情况需要N次比较，效率仍然低，因此不是一种很好的
  *          实现方式。
+ *  查找方式：
+ *          顺序查找
  */
 @SuppressWarnings({"unused"})
-public class DisorderSymbolTableImpl<Key extends Comparable<Key>,Value> implements IDisorderSymbolTable<Key,Value> {
+public class DisorderedSymbolTableImpl<Key extends Comparable<Key>,Value> implements IDisorderedSymbolTable<Key,Value> {
     private Node first,next;
     private int size = 0;
 

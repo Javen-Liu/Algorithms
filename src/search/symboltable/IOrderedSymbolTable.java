@@ -5,7 +5,7 @@ package search.symboltable;
  * 有序的泛型符号表
  */
 @SuppressWarnings("unused")
-public interface IOrderSymbolTable<Key extends Comparable<Key>,Value> {
+public interface IOrderedSymbolTable<Key extends Comparable<Key>,Value> {
     /**
      * 将键值对存入表中（若值为空，则将键key从表中删除）
      * @param key   键
@@ -21,10 +21,12 @@ public interface IOrderSymbolTable<Key extends Comparable<Key>,Value> {
     Value get(Key key);
 
     /**
-     * 从表中删去键key，及其对应的值value
+     * 从表中删去键key，及其对应的值value，并返回是否删除成功
      * @param key   键
+     * @return      若删除成功，则返回true
+     *              否则返回false
      */
-    void delete(Key key);
+    boolean delete(Key key);
 
     /**
      * 键key在表中是否有对应的值value
@@ -47,12 +49,12 @@ public interface IOrderSymbolTable<Key extends Comparable<Key>,Value> {
     int size();
 
     /**
-     * [lo..hi]之间键的数量
+     * [lo..hi]之间键的数量,上下界可以颠倒，且包括lo与hi
      * @param lo    指定范围的下界
      * @param hi    指定范围的上界
      * @return      返回数据类型为int
      */
-    int size(int lo, int hi);
+    int size(Key lo, Key hi);
 
     /**
      * 获取最小的键
@@ -68,7 +70,7 @@ public interface IOrderSymbolTable<Key extends Comparable<Key>,Value> {
 
     /**
      * 获取小于等于key的最大键
-     * 向下取整
+     * 向下取整，且允许key不存在
      * @param key   指定的键
      * @return      返回数据类型为泛型Key
      *              小于等于指定键的最大键
@@ -77,7 +79,7 @@ public interface IOrderSymbolTable<Key extends Comparable<Key>,Value> {
 
     /**
      * 获取大于等于key的最小键
-     * 向上取整
+     * 向上取整，且允许key不存在
      * @param key   指定的键
      * @return      返回数据类型为泛型Key
      *              大于等于指定键的最小键
@@ -116,7 +118,7 @@ public interface IOrderSymbolTable<Key extends Comparable<Key>,Value> {
      * @param hi    指定范围的上界
      * @return      返回Iterable的实现，且其中的数据类型为Key（泛型）
      */
-    Iterable<Key> keys(int lo, int hi);
+    Iterable<Key> keys(Key lo, Key hi);
 
     /**
      * 获取表中所有键key的集合
