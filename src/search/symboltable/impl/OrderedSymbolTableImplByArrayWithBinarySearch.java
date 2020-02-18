@@ -26,19 +26,19 @@ import java.util.Arrays;
  *        二分查找
  */
 @SuppressWarnings({"unused","unchecked"})
-public class OrderedSymbolTableImplByBinarySearch<Key extends Comparable<Key>, Value> implements IOrderedSymbolTable<Key,Value> {
+public class OrderedSymbolTableImplByArrayWithBinarySearch<Key extends Comparable<Key>, Value> implements IOrderedSymbolTable<Key,Value> {
     private Key[] keys;
     private Value[] vals;
     private int size = 0,capacity;
     public static final int DEFAULT_CAPACITY = 15;
 
-    public OrderedSymbolTableImplByBinarySearch(int capacity){
+    public OrderedSymbolTableImplByArrayWithBinarySearch(int capacity){
         keys = (Key[]) new Comparable[capacity];
         vals = (Value[]) new Object[capacity];
         this.capacity = capacity;
     }
 
-    public OrderedSymbolTableImplByBinarySearch(){
+    public OrderedSymbolTableImplByArrayWithBinarySearch(){
         keys = (Key[]) new Comparable[DEFAULT_CAPACITY];
         vals = (Value[]) new Object[DEFAULT_CAPACITY];
         capacity = DEFAULT_CAPACITY;
@@ -85,16 +85,15 @@ public class OrderedSymbolTableImplByBinarySearch<Key extends Comparable<Key>, V
     }
 
     @Override
-    public boolean delete(Key key) {
+    public void delete(Key key) {
         if(!contains(key) || isEmpty()){
-            return false;
+            return;
         }
         int index = rank(key);
         System.arraycopy(keys, index+1, keys, index, size - index);
         System.arraycopy(vals, index+1, vals, index, size - index);
         keys[size] = null;
         vals[size--] = null;
-        return true;
     }
 
     @Override
@@ -113,7 +112,12 @@ public class OrderedSymbolTableImplByBinarySearch<Key extends Comparable<Key>, V
         return size;
     }
 
-    @Override
+    /**
+     * [lo..hi]之间键的数量,上下界可以颠倒，且包括lo与hi
+     * @param lo    指定范围的下界
+     * @param hi    指定范围的上界
+     * @return      返回数据类型为int
+     */
     public int size(Key lo, Key hi) {
         int lowIndex = rank(lo), highIndex = rank(floor(hi));
         boolean containsLow = contains(lo), containsHigh = contains(hi);
