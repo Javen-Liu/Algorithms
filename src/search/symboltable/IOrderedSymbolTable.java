@@ -23,10 +23,8 @@ public interface IOrderedSymbolTable<Key extends Comparable<Key>,Value> {
     /**
      * 从表中删去键key，及其对应的值value，并返回是否删除成功
      * @param key   键
-     * @return      若删除成功，则返回true
-     *              否则返回false
      */
-    boolean delete(Key key);
+    void delete(Key key);
 
     /**
      * 键key在表中是否有对应的值value
@@ -47,14 +45,6 @@ public interface IOrderedSymbolTable<Key extends Comparable<Key>,Value> {
      *          为键值对数量
      */
     int size();
-
-    /**
-     * [lo..hi]之间键的数量,上下界可以颠倒，且包括lo与hi
-     * @param lo    指定范围的下界
-     * @param hi    指定范围的上界
-     * @return      返回数据类型为int
-     */
-    int size(Key lo, Key hi);
 
     /**
      * 获取最小的键
@@ -113,16 +103,16 @@ public interface IOrderedSymbolTable<Key extends Comparable<Key>,Value> {
     void deleteMax();
 
     /**
+     * 获取表中所有键key的集合
+     * @return  返回Iterable的实现，且其中的数据类型为Key（泛型）
+     */
+    Iterable<Key> keys();
+
+    /**
      * [lo..hi]之间的所有键，已排序
      * @param lo    指定范围的下界
      * @param hi    指定范围的上界
      * @return      返回Iterable的实现，且其中的数据类型为Key（泛型）
      */
     Iterable<Key> keys(Key lo, Key hi);
-
-    /**
-     * 获取表中所有键key的集合
-     * @return  返回Iterable的实现，且其中的数据类型为Key（泛型）
-     */
-    Iterable<Key> keys();
 }
