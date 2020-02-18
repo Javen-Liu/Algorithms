@@ -1,16 +1,15 @@
 package com.test;
 
 import org.junit.Test;
-import search.symboltable.IOrderedSymbolTable;
-import search.symboltable.impl.OrderedSymbolTableImplByBinarySearch;
+import search.symboltable.impl.OrderedSymbolTableImplByArrayWithBinarySearch;
 
 /**
  * @author 刘建雯
  * 测试由数组实现的有序字符表
- * 测试数据结构类：OrderedSymbolTableImplByBinarySearch
+ * 测试数据结构类：OrderedSymbolTableImplByArrayWithBinarySearch
  */
 public class OrderedSymbolTableTest1 {
-    IOrderedSymbolTable<String,Integer> st = new OrderedSymbolTableImplByBinarySearch<>();
+    OrderedSymbolTableImplByArrayWithBinarySearch<String,Integer> st = new OrderedSymbolTableImplByArrayWithBinarySearch<>();
     static final String[] keys = new String[]{"g","e","r","x","v","h","k","t","u","r","p","c","z","m","t","y","b","l"};
     static final int[] vals = new int[]{12,84,34,4,17,48,36,96,455,78,16,43,49,79,13,152,6,73};
 
