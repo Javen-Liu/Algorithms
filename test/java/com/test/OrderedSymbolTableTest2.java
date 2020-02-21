@@ -6,7 +6,7 @@ import java.util.Arrays;
 
 /**
  * @author 刘建雯
- * 测试由数组实现的有序字符表
+ * 测试由二叉树实现的有序字符表
  * 测试数据结构类：OrderedSymbolTableImplByNodeWithBinarySearch
  */
 public class OrderedSymbolTableTest2 {
