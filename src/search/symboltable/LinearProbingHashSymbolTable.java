@@ -1,5 +1,7 @@
 package search.symboltable;
 
+import java.util.ArrayList;
+
 /**
  * @author 刘建雯
  * 线性探测散列符号表
@@ -29,10 +31,11 @@ public class LinearProbingHashSymbolTable<Key ,Value> {
         if(size == capacity/2){
             resize(2*capacity);
         }
-        int i, hash = hash(key);
-        for(i = hash; keys[i] != null; i = (i+1) % capacity){
+        int i;
+        for(i = hash(key); keys[i] != null; i = (i+1) % capacity){
             if(key.equals(keys[i])){
                 vals[i] = val;
+                return;
             }
         }
         keys[i] = key;
@@ -88,4 +91,14 @@ public class LinearProbingHashSymbolTable<Key ,Value> {
         return get(key) != null;
     }
 
+    @Override
+    public String toString(){
+        StringBuilder content = new StringBuilder();
+        for (int i = 0; i < capacity; i++) {
+            if(keys[i] != null){
+                content.append(keys[i]).append("-").append(vals[i]).append(" ");
+            }
+        }
+        return content.toString();
+    }
 }
