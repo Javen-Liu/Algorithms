@@ -1,4 +1,4 @@
-package com.test;
+package com.test.symboltable;
 
 import org.junit.Test;
 import search.symboltable.impl.OrderedSymbolTableImplByRBTreeWithBinarySearch;
@@ -8,6 +8,7 @@ import search.symboltable.impl.OrderedSymbolTableImplByRBTreeWithBinarySearch;
  * 测试由红黑树实现的有序字符表
  * 测试数据结构类：OrderedSymbolTableImplByRBTreeWithBinarySearch
  */
+//todo
 public class OrderedSymbolTableTest3 {
     OrderedSymbolTableImplByRBTreeWithBinarySearch<String,Integer> st = new OrderedSymbolTableImplByRBTreeWithBinarySearch<>();
     static final String[] keys = new String[]{"g","e","r","x","v","h","k","t","u","r","p","c","z","m","t","y","b","l"};

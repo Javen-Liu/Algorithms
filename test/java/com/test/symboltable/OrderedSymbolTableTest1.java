@@ -1,22 +1,28 @@
-package com.test;
+package com.test.symboltable;
 
 import org.junit.Test;
-import search.symboltable.impl.OrderedSymbolTableImplByNodeWithBinarySearch;
-import java.util.Arrays;
+import search.symboltable.impl.OrderedSymbolTableImplByArrayWithBinarySearch;
 
 /**
  * @author 刘建雯
- * 测试由二叉树实现的有序字符表
- * 测试数据结构类：OrderedSymbolTableImplByNodeWithBinarySearch
+ * 测试由数组实现的有序字符表
+ * 测试数据结构类：OrderedSymbolTableImplByArrayWithBinarySearch
  */
-public class OrderedSymbolTableTest2 {
-    OrderedSymbolTableImplByNodeWithBinarySearch<String,Integer> st = new OrderedSymbolTableImplByNodeWithBinarySearch<>();
+public class OrderedSymbolTableTest1 {
+    OrderedSymbolTableImplByArrayWithBinarySearch<String,Integer> st = new OrderedSymbolTableImplByArrayWithBinarySearch<>();
     static final String[] keys = new String[]{"g","e","r","x","v","h","k","t","u","r","p","c","z","m","t","y","b","l"};
     static final int[] vals = new int[]{12,84,34,4,17,48,36,96,455,78,16,43,49,79,13,152,6,73};
 
     @Test
     public void putTest(){
-        for (int i = 0; i < 17; i++) {
+        for (int i = 0; i < 15; i++) {
+            st.put(keys[i],vals[i]);
+        }
+    }
+
+    @Test
+    public void resizeTest(){
+        for (int i = 0; i < 18; i++) {
             st.put(keys[i],vals[i]);
         }
     }
@@ -28,15 +34,10 @@ public class OrderedSymbolTableTest2 {
             st.put(keys[i],vals[i]);
         }
 
-        Iterable<String> keyList = st.keys();
-        String target = Arrays.toString(keys);
-        for(String key: keyList){
-            if(!target.contains(key)){
-                System.out.println("fail");
-                return;
-            }
+        Iterable<String> keys = st.keys();
+        for(String key: keys){
+            System.out.print(key+" ");
         }
-        System.out.println("pass");
     }
 
     @Test
@@ -95,11 +96,19 @@ public class OrderedSymbolTableTest2 {
     }
 
     @Test
+    public void sizeTest(){
+        for (int i = 0; i < keys.length; i++) {
+            st.put(keys[i],vals[i]);
+        }
+        System.out.println(st.size("l","u"));
+    }
+
+    @Test
     public void containsTest(){
         for (int i = 0; i < keys.length; i++) {
             st.put(keys[i],vals[i]);
         }
-        System.out.println(st.contains("e") ? "pass" : "fail");
-        System.out.println(!st.contains("d") ? "pass" : "fail");
+        System.out.println(st.contains("e"));
+        System.out.println(st.contains("d"));
     }
 }

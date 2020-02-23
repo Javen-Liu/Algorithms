@@ -1,4 +1,4 @@
-package com.test;
+package com.test.sort;
 
 import Sort.Data;
 import Sort.PriorityQueue.HeapSort;

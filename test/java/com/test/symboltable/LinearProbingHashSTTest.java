@@ -1,4 +1,4 @@
-package com.test;
+package com.test.symboltable;
 
 import org.junit.Test;
 import search.symboltable.LinearProbingHashSymbolTable;
