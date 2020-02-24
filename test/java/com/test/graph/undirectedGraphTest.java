@@ -1,10 +1,7 @@
 package com.test.graph;
 
 import DataStructure.ImplByLinkedList.Bag;
-import graph.undirectedgraph.BreadFirstPath;
-import graph.undirectedgraph.DepthFirstPath;
-import graph.undirectedgraph.DepthFirstSearch;
-import graph.undirectedgraph.Graph;
+import graph.undirectedgraph.*;
 import org.junit.Before;
 import org.junit.Test;
 import java.util.Stack;
@@ -78,5 +75,36 @@ public class undirectedGraphTest {
             }
         }
         System.out.println("0-5-4".equals(path.toString()) ? "pass" : "fail");
+    }
+
+    @Test
+    public void symbolGraphTest(){
+        SymbolGraph sg = new SymbolGraph("D:\\Documents\\IDEAWorkSpace\\Algorithms\\src\\graph\\undirectedgraph\\routes.txt"," ");
+        System.out.println(sg.contains("HOU"));
+        System.out.println(sg.contains("LKS"));
+        Graph routesGraph = sg.graph();
+        for (int i = 0; i < routesGraph.numberOfVertices(); i++) {
+            System.out.print(i+" "+sg.name(i)+":");
+            for(int v:routesGraph.adj(i)){
+                System.out.print(sg.name(v)+" ");
+            }
+            System.out.println();
+        }
+        int source = sg.index("JFK"), target = sg.index("LAX");
+        if(source < 0 || target < 0){
+            System.out.println("索引出现错误");
+            return;
+        }
+        BreadFirstPath bfp = new BreadFirstPath(routesGraph,source);
+        Stack<Integer> stack = (Stack<Integer>) bfp.pathTo(target);
+        int size = stack.size();
+        for (int i = 0; i < size; i++) {
+            if(sg.name(stack.peek()) != null){
+                System.out.print(sg.name(stack.pop()));
+                if(i < size-1){
+                    System.out.print("-");
+                }
+            }
+        }
     }
 }
