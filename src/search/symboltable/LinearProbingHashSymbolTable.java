@@ -91,6 +91,10 @@ public class LinearProbingHashSymbolTable<Key ,Value> {
         return get(key) != null;
     }
 
+    public int size(){
+        return size;
+    }
+
     @Override
     public String toString(){
         StringBuilder content = new StringBuilder();
