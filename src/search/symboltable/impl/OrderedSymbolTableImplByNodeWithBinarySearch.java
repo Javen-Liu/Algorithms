@@ -64,8 +64,9 @@ public class OrderedSymbolTableImplByNodeWithBinarySearch<Key extends Comparable
             node.right = put(node.right, key, val);
         }else if(res < 0){
             node.left = put(node.left, key, val);
+        }else{
+            node.val = val;
         }
-        node.val = val;
         node.size = size(node.left) + size(node.right) + 1;
         return node;
     }
