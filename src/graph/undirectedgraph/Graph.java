@@ -45,12 +45,21 @@ public class Graph {
     }
 
     public void addEdge(int v, int w){
+        if(v>vertexNum || w>vertexNum){
+            throw new ArrayIndexOutOfBoundsException("输入索引超出范围");
+        }
+        if(v<0 || w<0){
+            throw new NegativeArraySizeException("输入索引小于0");
+        }
         adj[v].add(w);
         adj[w].add(v);
         edgeNum++;
     }
 
     public Iterable<Integer> adj(int v){
+        if(v>vertexNum || v<0){
+            throw new ArrayIndexOutOfBoundsException("输入索引超出范围");
+        }
         return adj[v];
     }
 }
