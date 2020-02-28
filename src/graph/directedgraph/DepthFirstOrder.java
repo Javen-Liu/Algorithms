@@ -1,5 +1,6 @@
 package graph.directedgraph;
 
+import DataStructure.ImplByLinkedList.StackWithIterator;
 import sun.misc.Queue;
 
 import java.util.Stack;
@@ -13,12 +14,12 @@ public class DepthFirstOrder {
     private boolean[] marked;
     private Queue<Integer> pre;
     private Queue<Integer> post;
-    private Stack<Integer> reversePost;
+    private StackWithIterator<Integer> reversePost;
 
     public DepthFirstOrder(Digraph digraph){
         pre = new Queue<>();
         post = new Queue<>();
-        reversePost = new Stack<>();
+        reversePost = new StackWithIterator<>();
         marked = new boolean[digraph.numberOfVertices()];
         for (int i = 0; i < digraph.numberOfVertices(); i++) {
             if(!marked[i]){
