@@ -87,6 +87,7 @@ public class StackWithIterator<Item> implements Iterable<Item>{
     }
 
     private class LinkedListIterator implements Iterator<Item>{
+        Node current = first;
         int i = length;
 
         /**
@@ -104,8 +105,8 @@ public class StackWithIterator<Item> implements Iterable<Item>{
          */
         @Override
         public Item next() {
-            Item content = first.value;
-            first = first.next;
+            Item content = current.value;
+            current = current.next;
             i--;
             return content;
         }
@@ -125,9 +126,9 @@ public class StackWithIterator<Item> implements Iterable<Item>{
         for (int i = 0; i < 10; i++) {
             stack.push(""+i);
         }
-        Iterator<String> iterator = stack.iterator();
-        while(iterator.hasNext()){
-            System.out.println(iterator.next());
+        for (String s : stack) {
+            System.out.println(s);
         }
+        System.out.println(stack.pop());
     }
 }
