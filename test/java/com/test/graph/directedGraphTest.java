@@ -1,8 +1,6 @@
 package com.test.graph;
 
-import graph.directedgraph.Digraph;
-import graph.directedgraph.DirectedCycle;
-import graph.directedgraph.DirectedDepthFirstSearch;
+import graph.directedgraph.*;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -44,6 +42,18 @@ public class directedGraphTest {
         Iterable<String> cycles = cycleInfo.cycles();
         for(String cycle:cycles){
             System.out.println(cycle);
+        }
+    }
+
+    @Test
+    public void strongConnectedComponentTest(){
+        StrongConnectedComponent component = new StrongConnectedComponent(digraph);
+        System.out.println(component.stronglyConnected(0,4));
+        System.out.println(component.stronglyConnected(8,12));
+        Iterable<String> componentList = component.getAllComponent();
+        System.out.println("该有向图种有"+component.componentCount()+"个强连通分量,分别为：");
+        for (String value:componentList){
+            System.out.println(value);
         }
     }
 }
