@@ -3,8 +3,6 @@ package graph.directedgraph;
 import DataStructure.ImplByLinkedList.StackWithIterator;
 import sun.misc.Queue;
 
-import java.util.Stack;
-
 /**
  * @author 刘建雯
  * 有向环的基于深度优先搜索的顶点排序
