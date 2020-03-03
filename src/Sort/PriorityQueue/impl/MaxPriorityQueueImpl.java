@@ -26,7 +26,7 @@ public class MaxPriorityQueueImpl<Key extends Comparable<Key>> implements IMaxPr
      */
     public MaxPriorityQueueImpl(int initialCapacity){
         if(initialCapacity <= 0){
-            throw new NegativeArraySizeException("长度不符合长度");
+            throw new NegativeArraySizeException("长度不符合规定");
         }
         capacity = adaptCapacity(initialCapacity);
         pq = (Key[]) new Comparable[capacity];
@@ -106,7 +106,7 @@ public class MaxPriorityQueueImpl<Key extends Comparable<Key>> implements IMaxPr
      */
     private int adaptCapacity(int capacity){
         if(capacity == 0){
-            throw new NegativeArraySizeException("长度不符合长度");
+            throw new NegativeArraySizeException("长度不符合规定");
         }
         if (capacity == 1){
             return 1;
