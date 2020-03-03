@@ -56,9 +56,25 @@ public class Bag<Item> implements Iterable<Item> {
         }
     }
 
+    @Override
+    public String toString() {
+        StringBuilder content = new StringBuilder();
+        Node current = first;
+        while(current != null){
+            content.append(current.toString()).append(" ");
+            current = current.next;
+        }
+        return content.toString();
+    }
+
     private class Node{
         private Item value;
         private Node next;
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
     }
 
     public static void main(String[] args) {
@@ -67,9 +83,7 @@ public class Bag<Item> implements Iterable<Item> {
         for(String value:content){
             bag.add(value);
         }
-        for(String value:bag){
-            System.out.print(value+" ");
-        }
+        System.out.println(bag);
         System.out.println("\n"+bag.isEmpty());
         System.out.println(bag.size());
     }
