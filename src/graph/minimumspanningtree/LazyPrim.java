@@ -55,7 +55,7 @@ public class LazyPrim {
     }
 
     public double weight(){
-        int sum = 0;
+        double sum = 0;
         for(Edge edge:mst){
             sum += edge.weight();
         }
