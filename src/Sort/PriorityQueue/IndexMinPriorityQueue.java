@@ -28,13 +28,14 @@ public class IndexMinPriorityQueue<Key extends Comparable<Key>> {
      */
     private Key[] keys;
     public static final int DEFAULT_CAPACITY = 16;
-    private int size = 0;
+    private int size = 0,capacity;
 
     public IndexMinPriorityQueue(int initialCapacity){
-        index = new int[initialCapacity+1];
-        inverseIndex = new int[initialCapacity+1];
-        keys = (Key[]) new Comparable[initialCapacity+1];
-        for (int i = 0; i < initialCapacity + 1; i++) {
+        this.capacity = initialCapacity;
+        index = new int[capacity+1];
+        inverseIndex = new int[capacity+1];
+        keys = (Key[]) new Comparable[capacity+1];
+        for (int i = 0; i < capacity + 1; i++) {
             inverseIndex[i] = -1;
         }
     }
@@ -48,7 +49,7 @@ public class IndexMinPriorityQueue<Key extends Comparable<Key>> {
     }
 
     public boolean contains(int k){
-        if(k > size){
+        if(k > capacity){
             return false;
         }
         return inverseIndex[k] != -1;
@@ -110,7 +111,7 @@ public class IndexMinPriorityQueue<Key extends Comparable<Key>> {
     private void sink(int n){
         while(n*2 <= size){
             int j = n*2;
-            if(less(j+1,j) && j<size){
+            if(j<size && less(j+1,j)){
                 j++;
             }
             if(less(n,j)){
@@ -128,7 +129,9 @@ public class IndexMinPriorityQueue<Key extends Comparable<Key>> {
     private void exch(int i, int j){
         int temp = index[i];
         index[i] = index[j];
+        inverseIndex[index[i]] = i;
         index[j] = temp;
+        inverseIndex[temp] = j;
     }
 
     @Override
