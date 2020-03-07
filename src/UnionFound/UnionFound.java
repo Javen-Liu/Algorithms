@@ -20,54 +20,44 @@ import java.util.Scanner;
  */
 public class UnionFound implements IUnionFound{
     private int[] id;
+    private int[] sz;
     private int count;
 
-    private UnionFound(int num){
+    public UnionFound(int num){
         count = num;
         id = new int[num];
         for (int i = 0; i < num; i++) {
             id[i] = i;
         }
+        sz = new int[num];
+        for (int i = 0; i < num; i++) {
+            sz[i] = 1;
+        }
     }
 
     @Override
     public void union(int p, int q){
-        /**
-         * fast-union模型中的union()建立连通方法
-         */
-        id[q] = p;
+        int i = find(p);
+        int j = find(q);
+        if(i == j){
+            return;
+        }
+        if(sz[i] < sz[j]){
+            id[i] = j;
+            sz[j] += sz[i];
+        }else{
+            id[j] = i;
+            sz[i] += sz[j];
+        }
         count--;
-
-        /**
-         * fast-find模型中的union()建立连通方法
-         */
-//        int idP = find(p);
-//        int idQ = find(q);
-//        if(connected(p,q)){
-//            return;
-//        }
-//        for (int i = 0; i < id.length; i++) {
-//            if(id[i] == idQ){
-//                id[i] = idP;
-//            }
-//        }
-//        count--;
     }
 
     @Override
     public int find(int p) {
-        /**
-         * fast-union模型中的find()查找方法
-         */
         while(id[p] != p){
             p = id[p];
         }
         return p;
-
-        /**
-         * fast-find模型中的find()查找方法
-         */
-//        return id[p];
     }
 
     @Override
