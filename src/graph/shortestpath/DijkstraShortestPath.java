@@ -12,10 +12,8 @@ public class DijkstraShortestPath {
     private IndexMinPriorityQueue<Double> queue;
     private double[] distTo;
     private DirectedEdge[] edgeTo;
-    private int source;
 
     public DijkstraShortestPath(EdgeWeightedDigraph digraph, int source){
-        this.source = source;
         int size = digraph.numberOfVerities();
         queue = new IndexMinPriorityQueue<>(size);
         distTo = new double[size];
@@ -46,23 +44,19 @@ public class DijkstraShortestPath {
     }
 
     public double distTo(int v){
-        if(!hasPathTo(v)){
-            return 0;
-        }
-        double dist = 0;
-        for( ;v != source;v = edgeTo[v].from()){
-            dist += edgeTo[v].weigth();
-        }
-        return dist;
+        return distTo[v];
     }
 
     public boolean hasPathTo(int v){
-        return distTo[v] != Double.POSITIVE_INFINITY;
+        return distTo[v] <= Double.POSITIVE_INFINITY;
     }
 
     public Iterable<DirectedEdge> pathTo(int v){
+        if(!hasPathTo(v)){
+            return null;
+        }
         StackWithIterator<DirectedEdge> edgeList = new StackWithIterator<>();
-        for( ;v != source;v = edgeTo[v].from()){
+        for( ;edgeTo[v] != null;v = edgeTo[v].from()){
             edgeList.push(edgeTo[v]);
         }
         return edgeList;
