@@ -1,6 +1,8 @@
 package graph.shortestpath;
 
 import DataStructure.ImplByLinkedList.Bag;
+import graph.directedgraph.Digraph;
+
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
@@ -96,5 +98,15 @@ public class EdgeWeightedDigraph {
             }
         }
         return content.toString().trim();
+    }
+
+    public Digraph castToDigraph(){
+        Digraph digraph = new Digraph(vertexNum);
+        for (int i = 0; i < vertexNum; i++) {
+            for(DirectedEdge e:adj[i]){
+                digraph.addEdge(i,e.to());
+            }
+        }
+        return digraph;
     }
 }
