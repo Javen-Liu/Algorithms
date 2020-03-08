@@ -1,5 +1,7 @@
 package graph.shortestpath;
 
+import java.text.NumberFormat;
+
 /**
  * @author 刘建雯
  * 加权有向边
@@ -30,6 +32,8 @@ public class DirectedEdge {
 
     @Override
     public String toString() {
-        return from+"->"+to+": "+weigth;
+        NumberFormat nf = NumberFormat.getInstance();
+        nf.setMinimumFractionDigits(2);
+        return from+"->"+to+" "+nf.format(weigth);
     }
 }
