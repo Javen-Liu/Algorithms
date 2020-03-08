@@ -1,13 +1,12 @@
 package com.test.graph;
 
 import DataStructure.ImplByLinkedList.StackWithIterator;
+import graph.shortestpath.AcyclicShortestPath;
 import graph.shortestpath.DijkstraShortestPath;
 import graph.shortestpath.DirectedEdge;
 import graph.shortestpath.EdgeWeightedDigraph;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.util.Scanner;
 
 /**
  * @author 刘建雯
@@ -30,6 +29,7 @@ public class ShortestPath {
     public void DijkstraTest(){
         DijkstraShortestPath dsp = new DijkstraShortestPath(digraph,0);
         searchPathToVertex(dsp,6);
+        searchPathToVertex(dsp,4);
     }
 
     private void searchPathToVertex(DijkstraShortestPath dsp, int v){
@@ -44,5 +44,12 @@ public class ShortestPath {
         }
         path.append(v).append(" ");
         System.out.println(path.toString().trim().replace(" ","->"));
+    }
+
+    @Test
+    public void AcyclicTest(){
+        AcyclicShortestPath asp = new AcyclicShortestPath(new EdgeWeightedDigraph("D:\\Documents\\IDEAWorkSpace\\Algorithms\\src\\graph\\shortestpath\\AcyclicsRoutes.txt"," "));
+        System.out.println(asp.digraphSource());
+        System.out.println(asp.toString());
     }
 }
