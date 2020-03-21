@@ -10,12 +10,12 @@ import java.text.NumberFormat;
 public class DirectedEdge {
     private int from;
     private int to;
-    private double weigth;
+    private double weight;
 
-    public DirectedEdge(int from, int to, double weigth) {
+    public DirectedEdge(int from, int to, double weight) {
         this.from = from;
         this.to = to;
-        this.weigth = weigth;
+        this.weight = weight;
     }
 
     public int from(){
@@ -26,14 +26,14 @@ public class DirectedEdge {
         return to;
     }
 
-    public double weigth(){
-        return weigth;
+    public double weight(){
+        return weight;
     }
 
     @Override
     public String toString() {
         NumberFormat nf = NumberFormat.getInstance();
         nf.setMinimumFractionDigits(2);
-        return from+"->"+to+" "+nf.format(weigth);
+        return from+"->"+to+" "+nf.format(weight);
     }
 }

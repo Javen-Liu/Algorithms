@@ -31,8 +31,8 @@ public class DijkstraShortestPath {
     private void relax(EdgeWeightedDigraph digraph, int v){
         for(DirectedEdge e:digraph.adj(v)){
             int w = e.to();
-            if(distTo[v]+e.weigth() < distTo[w]){
-                distTo[w] = distTo[v] + e.weigth();
+            if(distTo[v]+e.weight() < distTo[w]){
+                distTo[w] = distTo[v] + e.weight();
                 edgeTo[w] = e;
                 if(queue.contains(w)){
                     queue.change(w,distTo[w]);

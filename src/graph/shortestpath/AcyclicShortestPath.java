@@ -44,8 +44,8 @@ public class AcyclicShortestPath {
     private void relax(EdgeWeightedDigraph digraph, int v){
         for(DirectedEdge e:digraph.adj(v)){
             int w = e.to();
-            if(distTo[w] > distTo[v] + e.weigth()){
-                distTo[w] = distTo[v] + e.weigth();
+            if(distTo[w] > distTo[v] + e.weight()){
+                distTo[w] = distTo[v] + e.weight();
                 edgeTo[w] = e;
             }
         }
